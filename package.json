@@ -13,6 +13,8 @@
   "scripts": {
     "mongo": "mongod --dbpath data/db",
     "server": "cd server && node server.js",
-    "start": "npm run mongo & sleep 3 & npm run server"
+    "backend": "npm run mongo & sleep 3 & npm run server",
+    "start": "concurrently \"npm run backend\" \"npm run client\"",
+    "client": "node start-client.js"
   }
 }
