@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {Redirect} from 'react-router-dom';
-import Button from '../ButtonComponent/Button';
 
 class CompanyForm extends Component {
   constructor() {
@@ -62,9 +61,8 @@ class CompanyForm extends Component {
             <input type="text" name="phone" className="form-control" id="companyPhone" placeholder="Enter Phone"
                    value={this.state.phone} onChange={this.onChange}/>
           </div>
-          {/*//This is weird*/}
           <div className="form-group" onClick={this.submit}>
-            <Button class="btn btn-primary" value="Save"/>
+            <button className="btn btn-primary">Save</button>
           </div>
         </div>
       </div>

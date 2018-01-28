@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import { Redirect } from 'react-router-dom';
-import Button from '../ButtonComponent/Button';
 import Api from "../ApiComponents/Api";
 
 class PersonForm extends Component {
@@ -28,14 +27,14 @@ class PersonForm extends Component {
     });
   }
 
-  submit = (event) => {
+  submit = () => {
     fetch("/person", {
       method: "POST",
       body: JSON.stringify({name: this.state.name, email: this.state.email, companyId: this.state.value }),
       headers: { "Content-Type": "application/json" }
     }).then((response) => {
       return response.json();
-    }).then((person) => {
+    }).then(() => {
       this.setState({redirect: true, id: this.state.value})
     })
   };
@@ -46,9 +45,12 @@ class PersonForm extends Component {
     this.setState(state);
   };
 
+  onSelectChange = (event) => {
+    this.setState({ value: event.target.value });
+  };
+
   render() {
     if (this.state.redirect) {
-      console.log("redirect attempted");
       return (<Redirect to={`/companies/${this.state.value}/people`}/>);
     }
 
@@ -68,13 +70,13 @@ class PersonForm extends Component {
           </div>
           <div className="form-group">
             <label>Company</label>
-            <select name="id" value={this.state.value} onChange={this.onChange} className="form-control">
+            <select name="id" value={this.state.value} onChange={this.onSelectChange} className="form-control">
               {this.state.companyNames.map((company, index) => <option key={index}
                                                                        value={company.id}>{company.name}</option>)}
             </select>
           </div>
           <div className="form-group" onClick={this.submit}>
-            <Button class="btn btn-primary" value="Save"/>
+            <button className="btn btn-primary">Save</button>
           </div>
         </div>
       </div>

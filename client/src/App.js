@@ -5,8 +5,7 @@ import CompanyList from './Components/CompanyListComponents/CompanyList';
 import CompanyForm from './Components/CompanyFormComponents/CompanyForm';
 import PersonForm from './Components/PersonFormComponents/PersonForm';
 import CompanyShow from './Components/CompanyShowComponents/CompanyShow';
-import PeopleShow from './Components/PeopleShowComponents/PeopleShow';
-// import Api from './Components/ApiComponents/Api';
+import PeopleShow from './Components/PersonShowComponents/PersonShow';
 import './App.css';
 
 const HomePage = () => (

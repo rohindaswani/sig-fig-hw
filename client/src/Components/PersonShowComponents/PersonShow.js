@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import Header from '../HeaderComponents/Header';
-import CompanyForm from "../CompanyFormComponents/CompanyForm";
-import PersonForm from "../PersonFormComponents/PersonForm";
 import { Link } from 'react-router-dom';
 import Api from "../ApiComponents/Api";
 
