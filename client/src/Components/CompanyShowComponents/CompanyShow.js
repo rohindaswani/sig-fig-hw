@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import Header from '../HeaderComponents/Header';
 import CompanyForm from "../CompanyFormComponents/CompanyForm";
 import PersonForm from "../PersonFormComponents/PersonForm";
-import { Link } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 import Api from "../ApiComponents/Api";
+import PeopleShow from "../PeopleShowComponents/PeopleShow";
 
 class CompanyShow extends Component {
   constructor(props) {
@@ -16,8 +17,8 @@ class CompanyShow extends Component {
       //refactor this code
       let company = (
         <div>
-          <div className="col-sm-12">
-            <nav className="navbar navbar-light bg-primary"><h1 className="navbar-brand">{data.name}</h1></nav>
+          <div className="col-sm-12 panel-heading">
+            <div className="panel-title">{data.name}</div>
           </div>
           <div className="col-sm-offset-1 col-sm-6"><h5>Address:</h5></div>
           <div className="col-sm-offset-1 col-sm-6"><p>{data.address}</p></div>
@@ -25,7 +26,8 @@ class CompanyShow extends Component {
           <div className="col-sm-offset-1 col-sm-6"><p>{data.revenue}</p></div>
           <div className="col-sm-offset-1 col-sm-6"><h5>Phone:</h5></div>
           <div className="col-sm-offset-1 col-sm-6"><p>{data.phone}</p></div>
-          <div className="col-sm-6"><Link className="col-sm-1" to="/companies">Back</Link></div>
+          <div className="col-sm-12 panel-footer"><Link to={`/companies/${this.props.match.params.id}/people`}>People who work here</Link></div>
+          <Route path={`/companies/${this.props.id}/people`} exact component={PeopleShow} company={this.props.name}/>
         </div>
       );
       this.setState({company: company});
@@ -37,13 +39,14 @@ class CompanyShow extends Component {
       <div>
         <Header/>
         <div className="col-sm-6">
-          <div className="row">
+          <div className="row panel panel-default">
             {this.state.company}
           </div>
+          <div className="row"><Link className="col-sm-1" to="/companies">Back</Link></div>
         </div>
         <div className="col-sm-offset-1 col-sm-5">
-          <CompanyForm/>
-          <PersonForm/>
+          {/*<CompanyForm/>*/}
+          {/*<PersonForm/>*/}
         </div>
       </div>
     )

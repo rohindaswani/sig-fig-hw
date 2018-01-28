@@ -21,8 +21,8 @@ class PersonForm extends Component {
         return {name: company.name, id: company._id};
       });
       this.setState({
-          companyNames: companyNames,
-          value: companyNames[0].id
+        companyNames: companyNames,
+        value: companyNames[0].id
         }
       )
     });
@@ -36,7 +36,7 @@ class PersonForm extends Component {
     }).then((response) => {
       return response.json();
     }).then((person) => {
-      this.setState({redirect: true, id: this.value})
+      this.setState({redirect: true, id: this.state.value})
     })
   };
 
@@ -48,6 +48,7 @@ class PersonForm extends Component {
 
   render() {
     if (this.state.redirect) {
+      console.log("redirect attempted");
       return (<Redirect to={`/companies/${this.state.value}/people`}/>);
     }
 

@@ -5,7 +5,7 @@ body {
 }
 
 a.no-decoration {
-  text-decoration: none !important;
+  text-decoration: none;
   color: white;
 }
 
