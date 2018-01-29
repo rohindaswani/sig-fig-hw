@@ -1,0 +1,14 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+a.no-decoration {
+  text-decoration: none;
+  color: white;
+}
+
+a.no-decoration:hover {
+  cursor: hand;
+}
