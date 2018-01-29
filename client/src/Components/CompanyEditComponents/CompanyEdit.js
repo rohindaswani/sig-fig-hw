@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {Redirect} from 'react-router-dom';
 import Api from '../ApiComponents/Api';
 import Header from "../HeaderComponents/Header";
-import PersonShow from "../PersonShowComponents/PersonShow";
 
 class CompanyEdit extends Component {
   constructor() {
