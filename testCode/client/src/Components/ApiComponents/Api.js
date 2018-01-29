@@ -56,6 +56,11 @@ const Api = {
       body: JSON.stringify(person),
       headers: {"Content-Type": "application/json"}
     }).catch(log)
+  },
+  deletePerson: (id) => {
+    return fetch(`/person/${id}`, {
+      method: "DELETE"
+    }).catch(log)
   }
 };
 

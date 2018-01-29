@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Header from '../HeaderComponents/Header';
-import {Link, Route} from 'react-router-dom';
+import {Link, Route, Redirect} from 'react-router-dom';
 import Api from "../ApiComponents/Api";
 import CompanyForm from '../CompanyFormComponents/CompanyForm';
 import PersonEdit from '../PersonEditComponents/PersonEdit';
@@ -28,9 +28,19 @@ class PeopleShow extends Component {
     this.state = {
       people: [],
       company: {},
-      show: false
+      show: false,
+      redirect: false
     };
   }
+
+  deletePerson = (id) => {
+    let personId = id;
+    return () =>
+      Api.deletePerson(personId).then(() => {
+        this.setState({redirect: true});
+    })
+  };
+
 
   onClick = (event) => {
     event.preventDefault();
@@ -42,7 +52,7 @@ class PeopleShow extends Component {
       Api.getPeopleIndex(this.props.match.params.id).then((people) => {
         let peopleComponents = people.map((person, index) => {
           return (
-            <li key={index}><a onClick={this.onClick} href='#'>{person.name}</a></li>
+            <li key={index}><a onClick={this.onClick} href='#'>{person.name}</a><a className="pull-right" href="#" onClick={this.deletePerson(person._id)}>Delete</a></li>
           )
         });
         this.setState({company: company, people: people, peopleComponents: peopleComponents});
@@ -51,6 +61,9 @@ class PeopleShow extends Component {
   };
 
   render() {
+    if (this.state.redirect) {
+      return (<Redirect to={`/companies/${this.props.match.params.id}`}/>);
+    }
     return (
       <div>
         <div className="row">
