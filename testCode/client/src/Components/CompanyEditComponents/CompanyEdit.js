@@ -59,7 +59,7 @@ class CompanyEdit extends Component {
           <div className="col-sm-6">
             <div className="row panel panel-default">
               <div className="col-sm-12">
-                <h2>Create New Company</h2>
+                <h2>Edit Company</h2>
                 <div className="form-group">
                   <label>Name</label>
                   <input type="text" name="name" className="form-control" placeholder="Enter Name"

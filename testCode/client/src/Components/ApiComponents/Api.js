@@ -36,6 +36,11 @@ const Api = {
       return response.json();
     })
   },
+  getPerson: (id) => {
+    return fetch(`/person/${id}`).catch(log).then((response) => {
+      return response.json();
+    })
+  },
   createPerson: (data) => {
     return fetch("/person", {
       method: "POST",
@@ -44,6 +49,13 @@ const Api = {
     }).catch(log).then((response) => {
       return response.json();
     })
+  },
+  updatePerson: ({person, id}) => {
+    return fetch(`/person/${id}`, {
+      method: "PUT",
+      body: JSON.stringify(person),
+      headers: {"Content-Type": "application/json"}
+    }).catch(log)
   }
 };
 

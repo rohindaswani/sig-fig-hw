@@ -7,6 +7,7 @@ import CompanyShow from './Components/CompanyShowComponents/CompanyShow';
 import PersonForm from './Components/PersonFormComponents/PersonForm';
 import PeopleShow from './Components/PersonShowComponents/PersonShow';
 import CompanyEdit from './Components/CompanyEditComponents/CompanyEdit';
+import PersonEdit from './Components/PersonEditComponents/PersonEdit';
 
 const HomePage = () => (
   <div>
@@ -40,6 +41,7 @@ class App extends Component {
             <Route path="/companies/:id" exact component={CompanyShow}/>
             <Route path="/companies/:id/edit" exact component={CompanyEdit}/>
             <Route path="/companies/:id/people" component={PeopleShow}/>
+            <Route path="/person/:id/edit" exact component={PersonEdit}/>
             <Redirect from="/" to="/companies" component={HomePage}/>
           </Switch>
         </div>

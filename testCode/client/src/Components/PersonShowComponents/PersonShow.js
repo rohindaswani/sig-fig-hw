@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import Header from '../HeaderComponents/Header';
-import {Link} from 'react-router-dom';
+import {Link, Route} from 'react-router-dom';
 import Api from "../ApiComponents/Api";
 import CompanyForm from '../CompanyFormComponents/CompanyForm';
+import PersonEdit from '../PersonEditComponents/PersonEdit';
 
 const ShowPerson = (props) => {
   let person = props.people.find((p) => { return p.name === props.selectedName });
@@ -15,6 +16,8 @@ const ShowPerson = (props) => {
       <div className="col-sm-offset-1 col-sm-8"><p>{person.email}</p></div>
       <div className="col-sm-offset-1 col-sm-8"><h5>Company:</h5></div>
       <div className="col-sm-offset-1 col-sm-8"><p>{props.companyName}</p></div>
+      <div className="col-sm-offset-1 col-sm-8"><Link to={`/person/${person._id}/edit`}>Edit</Link></div>
+      <Route path={`person/:id/edit`} exact component={PersonEdit}/>
     </div>
   );
 };
@@ -63,7 +66,7 @@ class PeopleShow extends Component {
                 <ul>
                   {this.state.peopleComponents}
                 </ul>
-                {this.state.show && <ShowPerson selectedName={this.state.selectedName} people={this.state.people} companyName={this.state.company.name}/>}
+                {this.state.show && <ShowPerson selectedName={this.state.selectedName} people={this.state.people} companyName={this.state.company.name} companyId={this.props.match.params.id}/>}
               </div>
             </div>
             <div className="row">
