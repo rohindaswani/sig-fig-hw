@@ -22,6 +22,7 @@ class CompanyEdit extends Component {
         company: data,
         name: data.name,
         address: data.address,
+        revenue: data.revenue,
         phone: data.phone,
         id: data._id
       });
@@ -35,8 +36,8 @@ class CompanyEdit extends Component {
       revenue: this.state.revenue,
       phone: this.state.phone
     };
-    Api.updateCompany({company: data, companyId: this.state.id}).then((company) => {
-      this.setState({redirect: true, id: company._id})
+    Api.updateCompany({company: data, id: this.state.id}).then(() => {
+      this.setState({redirect: true})
     })
   };
 

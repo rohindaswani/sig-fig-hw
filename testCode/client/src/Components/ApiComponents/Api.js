@@ -1,12 +1,17 @@
-//catch err if json parse fails
+
+const log = (message, error) => {
+  console.error(message, error);
+  throw error
+};
+
 const Api = {
   getCompaniesIndex: () => {
-    return fetch("/companies").then((response) => {
+    return fetch("/companies").catch(log).then((response) => {
       return response.json();
     })
   },
   getCompany: (id) => {
-    return fetch(`/companies/${id}`).then((response) => {
+    return fetch(`/companies/${id}`).catch(log).then((response) => {
       return response.json();
     })
   },
@@ -15,21 +20,19 @@ const Api = {
       method: "POST",
       body: JSON.stringify(data),
       headers: {"Content-Type": "application/json"}
-    }).then((response) => {
+    }).catch(log).then((response) => {
       return response.json();
     })
   },
-  updateCompany: (data) => {
-    return fetch("/companies", {
+  updateCompany: ({company, id}) => {
+    return fetch(`/companies/${id}`, {
       method: "PUT",
-      body: JSON.stringify(data),
+      body: JSON.stringify(company),
       headers: {"Content-Type": "application/json"}
-    }).then((response) => {
-      return response.json();
-    })
+    }).catch(log)
   },
   getPeopleIndex: (id) => {
-    return fetch(`/companies/${id}/people`).then((response) => {
+    return fetch(`/companies/${id}/people`).catch(log).then((response) => {
       return response.json();
     })
   },
@@ -38,7 +41,7 @@ const Api = {
       method: "POST",
       body: JSON.stringify(data),
       headers: {"Content-Type": "application/json"}
-    }).then((response) => {
+    }).catch(log).then((response) => {
       return response.json();
     })
   }
