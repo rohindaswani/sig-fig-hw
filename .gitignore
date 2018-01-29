@@ -1,4 +1,4 @@
 /.idea
-/node_modules
-/data
-/sandbox
+node_modules
+data
+sandbox
