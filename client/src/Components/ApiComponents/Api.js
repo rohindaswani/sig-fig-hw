@@ -19,6 +19,15 @@ const Api = {
       return response.json();
     })
   },
+  updateCompany: (data) => {
+    return fetch("/companies", {
+      method: "PUT",
+      body: JSON.stringify(data),
+      headers: {"Content-Type": "application/json"}
+    }).then((response) => {
+      return response.json();
+    })
+  },
   getPeopleIndex: (id) => {
     return fetch(`/companies/${id}/people`).then((response) => {
       return response.json();

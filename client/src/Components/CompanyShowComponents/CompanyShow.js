@@ -4,6 +4,7 @@ import { Link, Route } from 'react-router-dom';
 import Api from "../ApiComponents/Api";
 import PersonShow from "../PersonShowComponents/PersonShow";
 import PersonForm from '../PersonFormComponents/PersonForm';
+import CompanyEdit from '../CompanyEditComponents/CompanyEdit';
 
 class CompanyShow extends Component {
   constructor(props) {
@@ -24,7 +25,8 @@ class CompanyShow extends Component {
           <div className="col-sm-offset-1 col-sm-6"><p>{data.revenue}</p></div>
           <div className="col-sm-offset-1 col-sm-6"><h5>Phone:</h5></div>
           <div className="col-sm-offset-1 col-sm-6"><p>{data.phone}</p></div>
-          <div className="col-sm-12 panel-footer"><Link to={`/companies/${this.props.match.params.id}/people`}>People who work here</Link></div>
+          <div className="col-sm-12 panel-footer"><Link to={`/companies/${this.props.match.params.id}/people`}>People who work here</Link><Link className="pull-right" to={`/companies/${this.props.match.params.id}/edit`}>Edit</Link></div>
+          <Route path={`/companies/${this.props.id}/edit`} exact component={CompanyEdit}/>
           <Route path={`/companies/${this.props.id}/people`} exact component={PersonShow} company={this.props.name}/>
         </div>
       );

@@ -6,6 +6,7 @@ import CompanyForm from './Components/CompanyFormComponents/CompanyForm';
 import CompanyShow from './Components/CompanyShowComponents/CompanyShow';
 import PersonForm from './Components/PersonFormComponents/PersonForm';
 import PeopleShow from './Components/PersonShowComponents/PersonShow';
+import CompanyEdit from './Components/CompanyEditComponents/CompanyEdit';
 
 const HomePage = () => (
   <div>
@@ -37,6 +38,7 @@ class App extends Component {
           <Switch>
             <Route path="/companies" exact component={HomePage}/>
             <Route path="/companies/:id" exact component={CompanyShow}/>
+            <Route path="/companies/:id/edit" exact component={CompanyEdit}/>
             <Route path="/companies/:id/people" component={PeopleShow}/>
             <Redirect from="/" to="/companies" component={HomePage}/>
           </Switch>
