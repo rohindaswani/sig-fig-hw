@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Redirect } from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 import Api from "../ApiComponents/Api";
 
 class PersonForm extends Component {
@@ -20,21 +20,16 @@ class PersonForm extends Component {
         return {name: company.name, id: company._id};
       });
       this.setState({
-        companyNames: companyNames,
-        value: companyNames[0].id
+          companyNames: companyNames,
+          value: companyNames[0].id
         }
       )
     });
   }
 
   submit = () => {
-    fetch("/person", {
-      method: "POST",
-      body: JSON.stringify({name: this.state.name, email: this.state.email, companyId: this.state.value }),
-      headers: { "Content-Type": "application/json" }
-    }).then((response) => {
-      return response.json();
-    }).then(() => {
+    let data = {name: this.state.name, email: this.state.email, companyId: this.state.value};
+    Api.createPerson(data).then((person) => {
       this.setState({redirect: true, id: this.state.value})
     })
   };
@@ -46,7 +41,7 @@ class PersonForm extends Component {
   };
 
   onSelectChange = (event) => {
-    this.setState({ value: event.target.value });
+    this.setState({value: event.target.value});
   };
 
   render() {
@@ -55,17 +50,17 @@ class PersonForm extends Component {
     }
 
     return (
-      <div className="row">
+      <div className="row panel panel-default">
         <div className="col-sm-12">
           <h2>Create New Person</h2>
           <div className="form-group">
             <label>Name</label>
-            <input type="text" name="name" className="form-control" id="personName" placeholder="Enter Name"
+            <input type="text" name="name" className="form-control" placeholder="Enter Name"
                    value={this.state.name} onChange={this.onChange}/>
           </div>
           <div className="form-group">
             <label>Email</label>
-            <input type="email" name="email" className="form-control" id="personEmail" placeholder="Enter Email"
+            <input type="email" name="email" className="form-control" placeholder="Enter Email"
                    value={this.state.email} onChange={this.onChange}/>
           </div>
           <div className="form-group">

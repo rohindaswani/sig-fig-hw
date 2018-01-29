@@ -3,6 +3,7 @@ import Header from '../HeaderComponents/Header';
 import { Link, Route } from 'react-router-dom';
 import Api from "../ApiComponents/Api";
 import PersonShow from "../PersonShowComponents/PersonShow";
+import PersonForm from '../PersonFormComponents/PersonForm';
 
 class CompanyShow extends Component {
   constructor(props) {
@@ -12,7 +13,6 @@ class CompanyShow extends Component {
 
   componentWillMount() {
     Api.getCompany(this.props.match.params.id).then((data) => {
-      //refactor this code
       let company = (
         <div>
           <div className="col-sm-12 panel-heading">
@@ -43,8 +43,7 @@ class CompanyShow extends Component {
           <div className="row"><Link className="col-sm-1" to="/companies">Back</Link></div>
         </div>
         <div className="col-sm-offset-1 col-sm-5">
-          {/*<CompanyForm/>*/}
-          {/*<PersonForm/>*/}
+          <PersonForm/>
         </div>
       </div>
     )

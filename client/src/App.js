@@ -3,23 +3,28 @@ import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom
 import Header from './Components/HeaderComponents/Header';
 import CompanyList from './Components/CompanyListComponents/CompanyList';
 import CompanyForm from './Components/CompanyFormComponents/CompanyForm';
-import PersonForm from './Components/PersonFormComponents/PersonForm';
 import CompanyShow from './Components/CompanyShowComponents/CompanyShow';
+import PersonForm from './Components/PersonFormComponents/PersonForm';
 import PeopleShow from './Components/PersonShowComponents/PersonShow';
-import './App.css';
 
 const HomePage = () => (
   <div>
-    <Header/>
-    <div className="col-sm-6">
-      <div className="row">
-        <h1>Companies</h1>
-        <CompanyList/>
-      </div>
+    <div className="row">
+      <Header/>
     </div>
-    <div className="col-sm-offset-1 col-sm-5">
-      <CompanyForm/>
-      <PersonForm/>
+    <div className="row">
+      <div className="col-sm-6">
+        <div className="row">
+          <h1>Companies</h1>
+          <div className="col-sm-12">
+            <CompanyList/>
+          </div>
+        </div>
+      </div>
+      <div className="col-sm-offset-1 col-sm-5">
+        <CompanyForm/>
+        <PersonForm/>
+      </div>
     </div>
   </div>
 );
