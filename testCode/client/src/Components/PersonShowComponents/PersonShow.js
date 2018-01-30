@@ -22,7 +22,7 @@ const ShowPerson = (props) => {
   );
 };
 
-class PeopleShow extends Component {
+class ShowPersons extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -35,12 +35,12 @@ class PeopleShow extends Component {
 
   deletePerson = (id) => {
     let personId = id;
-    return () =>
+    return () => {
       Api.deletePerson(personId).then(() => {
         this.setState({redirect: true});
-    })
+      })
+    };
   };
-
 
   onClick = (event) => {
     event.preventDefault();
@@ -97,4 +97,4 @@ class PeopleShow extends Component {
 }
 
 
-export default PeopleShow;
+export default ShowPersons;

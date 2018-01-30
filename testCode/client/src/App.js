@@ -5,7 +5,7 @@ import CompanyList from './Components/CompanyListComponents/CompanyList';
 import CompanyForm from './Components/CompanyFormComponents/CompanyForm';
 import CompanyShow from './Components/CompanyShowComponents/CompanyShow';
 import PersonForm from './Components/PersonFormComponents/PersonForm';
-import PeopleShow from './Components/PersonShowComponents/PersonShow';
+import ShowPersons from './Components/PersonShowComponents/PersonShow';
 import CompanyEdit from './Components/CompanyEditComponents/CompanyEdit';
 import PersonEdit from './Components/PersonEditComponents/PersonEdit';
 
@@ -40,7 +40,7 @@ class App extends Component {
             <Route path="/companies" exact component={HomePage}/>
             <Route path="/companies/:id" exact component={CompanyShow}/>
             <Route path="/companies/:id/edit" exact component={CompanyEdit}/>
-            <Route path="/companies/:id/people" component={PeopleShow}/>
+            <Route path="/companies/:id/people" component={ShowPersons}/>
             <Route path="/person/:id/edit" exact component={PersonEdit}/>
             <Redirect from="/" to="/companies" component={HomePage}/>
           </Switch>
